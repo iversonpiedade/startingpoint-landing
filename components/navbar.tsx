@@ -15,29 +15,23 @@ export const Navbar = () => {
   return (
     <motion.nav
       className={cn(
-        "fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-300",
+        "fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center px-8 py-3 transition-all duration-300 rounded-full border border-white/20",
         scrolled
-          ? "bg-slate-950/70 backdrop-blur-md border-b border-white/10"
-          : "bg-transparent"
+          ? "bg-white/70 backdrop-blur-xl border-white/40 shadow-lg"
+          : "bg-white/50 backdrop-blur-md border-white/20"
       )}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex items-center gap-2">
-        <Link href="/" className="text-xl font-bold tracking-tighter text-white">
-          Starting Point
-        </Link>
-      </div>
-
-      <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <Link href="#services" className="hover:text-white transition-colors">
+      <div className="hidden md:flex items-center gap-12 text-base font-medium text-slate-600">
+        <Link href="#services" className="hover:text-neon-blue hover:scale-105 transition-all">
           Serviços
         </Link>
-        <Link href="#method" className="hover:text-white transition-colors">
+        <Link href="#method" className="hover:text-neon-blue hover:scale-105 transition-all">
           Método
         </Link>
-        <Link href="#contact" className="hover:text-white transition-colors">
+        <Link href="#contact" className="hover:text-neon-blue hover:scale-105 transition-all">
           Contacto
         </Link>
       </div>

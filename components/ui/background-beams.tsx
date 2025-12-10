@@ -7,11 +7,11 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "absolute inset-0 z-0 flex h-full w-full items-center justify-center overflow-hidden bg-slate-950",
+        "absolute inset-0 z-0 flex h-full w-full items-center justify-center overflow-hidden bg-white",
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-slate-950 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="absolute left-0 top-0 h-full w-full overflow-hidden opacity-30">
          <motion.div
             initial={{ opacity: 0.5, y: -100 }}
