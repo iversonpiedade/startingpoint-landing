@@ -9,7 +9,7 @@ const items = [
     description: "Soluções digitais modernas para eventos e celebrações.",
     header: (
       <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-100 to-neutral-200 p-4 items-center justify-center">
-        <Image src="/partners/convite.png" alt="Convite Digital" width={150} height={150} className="object-contain grayscale brightness-0 opacity-70 hover:filter-none hover:opacity-100 transition-all duration-300" />
+        <Image src="/partners/convite.png" alt="Convite Digital" width={150} height={150} className="object-contain grayscale brightness-0 opacity-70 hover:opacity-100 transition-all duration-300" />
       </div>
     ),
     icon: <ArrowUpRight className="h-4 w-4 text-neutral-500" />,
@@ -45,7 +45,19 @@ const items = [
     description: "Call Center Inteligente com IA disponível 24/24h para o seu negócio.",
     header: (
       <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-100 to-neutral-200 p-4 items-center justify-center">
-        <Image src="/partners/sanjila.png" alt="Sanjila" width={150} height={150} className="object-contain grayscale brightness-0 opacity-70 hover:filter-none hover:opacity-100 transition-all duration-300" />
+        <div 
+          className="w-[150px] h-[150px] bg-black opacity-70 hover:opacity-100 hover:bg-[#28145d] transition-all duration-300 mask-center"
+          style={{
+            maskImage: `url('/partners/sanjila.png')`,
+            maskSize: 'contain',
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
+            WebkitMaskImage: `url('/partners/sanjila.png')`,
+            WebkitMaskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center'
+          }}
+        />
       </div>
     ),
     icon: <ArrowUpRight className="h-4 w-4 text-neutral-500" />,
