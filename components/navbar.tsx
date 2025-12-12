@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 export const Navbar = () => {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 50);
@@ -37,12 +39,47 @@ export const Navbar = () => {
       </div>
 
       <div className="md:hidden">
-        {/* Mobile Menu Placeholder - keeping it simple as per request or just basic hamburger */}
-        <button className="text-white p-2">
-           <span className="sr-only">Menu</span>
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-slate-600 p-2 hover:bg-slate-100 rounded-full transition-colors"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 right-0 mt-4 p-4 bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl rounded-2xl flex flex-col gap-4 text-center md:hidden"
+          >
+            <Link 
+              href="#services" 
+              onClick={() => setIsOpen(false)}
+              className="py-2 text-slate-600 font-medium hover:text-blue-500 hover:bg-slate-50 rounded-lg transition-all"
+            >
+              Serviços
+            </Link>
+            <Link 
+              href="#method" 
+              onClick={() => setIsOpen(false)}
+              className="py-2 text-slate-600 font-medium hover:text-blue-500 hover:bg-slate-50 rounded-lg transition-all"
+            >
+              Método
+            </Link>
+            <Link 
+              href="#contact" 
+              onClick={() => setIsOpen(false)}
+              className="py-2 text-slate-600 font-medium hover:text-blue-500 hover:bg-slate-50 rounded-lg transition-all"
+            >
+              Contacto
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
